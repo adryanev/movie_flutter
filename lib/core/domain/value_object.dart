@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_flutter/core/domain/error.dart';
 import 'package:movie_flutter/core/domain/value_failure.dart';
+import 'package:movie_flutter/core/domain/value_validator.dart';
 
 // ignore: one_member_abstracts
 abstract class IValidatable {
@@ -34,4 +35,29 @@ abstract class ValueObject<T> implements IValidatable {
 
   @override
   String toString() => 'Value($value)';
+}
+
+class UniqueId extends ValueObject<int> {
+  factory UniqueId(int? input) {
+    assert(input != null, 'id cannot be null');
+    // karena inputan langsung berupa int, tidak ada yg perlu divalidasi
+    return UniqueId._(right(input!));
+  }
+  const UniqueId._(this.value);
+  @override
+  final Either<ValueFailure<int>, int> value;
+}
+
+class StringSingleLine extends ValueObject<String> {
+  factory StringSingleLine(String? input) {
+    assert(input != null, 'input value cannot be null');
+    return StringSingleLine._(
+      validateStringNotEmpty(input!).flatMap(validateSingleLine),
+    );
+  }
+
+  const StringSingleLine._(this.value);
+
+  @override
+  final Either<ValueFailure<String>, String> value;
 }
