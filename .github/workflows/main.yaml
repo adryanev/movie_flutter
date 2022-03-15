@@ -2,11 +2,11 @@ name: movie_flutter
 
 on:
   pull_request:
-    paths:
-      - "**.dart"
+    # paths:
+    #   - "**.dart"
   push:
-    paths:
-      - "**.dart"
+    # paths:
+    #   - "**.dart"
 jobs:
   build:
     runs-on: ubuntu-latest
