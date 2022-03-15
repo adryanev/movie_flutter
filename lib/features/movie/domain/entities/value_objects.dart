@@ -43,11 +43,16 @@ class Poster extends ValueObject<String> {
 }
 
 class Trailer extends ValueObject<String> {
-  factory Trailer(String url) {
+  factory Trailer(String? url) {
+    if (url == null || url.isEmpty) {
+      return Trailer._(right(defaultTrailer));
+    }
     return Trailer._(right(url));
   }
 
   const Trailer._(this.value);
+  static const defaultTrailer =
+      'https://www.youtube.com/watch?v=PWbRleMGagU&list=RDjZhW9pupZfI';
   @override
   final Either<ValueFailure<String>, String> value;
 }
