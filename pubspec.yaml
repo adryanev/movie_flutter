@@ -16,7 +16,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   freezed_annotation: ^1.1.0
+  get_it: ^7.2.0
+  injectable: ^1.5.2
   intl: ^0.17.0
+  json_serializable: ^6.1.5
 
 dev_dependencies:
   bloc_test: ^9.0.3
@@ -24,6 +27,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^1.1.0
+  injectable_generator: ^1.5.2
   mocktail: ^0.2.0
   very_good_analysis: ^2.4.0
 
