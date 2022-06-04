@@ -11,25 +11,21 @@ import 'package:movie_flutter/features/movie/domain/repositories/movie_contract.
 class MovieRepository implements MovieContract {
   @override
   Future<Either<Failure, MovieDetail>> getMovieDetail(Movie movie) {
-    // TODO: implement getMovieDetail
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, List<Movie>>> getMoviesByGenre(Genre genre) {
-    // TODO: implement getMoviesByGenre
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, List<Movie>>> getTrendingMovies() {
-    // TODO: implement getTrendingMovies
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, List<Movie>>> searchMovies(SearchQuery searchQuery) {
-    // TODO: implement searchMovies
     throw UnimplementedError();
   }
 }

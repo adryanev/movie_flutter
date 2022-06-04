@@ -6,11 +6,11 @@ import 'package:movie_flutter/features/movie/data/models/movie_list_dto.dart';
 import 'package:movie_flutter/features/movie/data/models/video_dto.dart';
 import 'package:movie_flutter/features/movie/domain/entities/movie_detail.dart';
 import 'package:movie_flutter/features/movie/domain/entities/value_objects.dart';
+
 part 'movie_detail_dto.freezed.dart';
 part 'movie_detail_dto.g.dart';
 
 @freezed
-@JsonSerializable(createToJson: false)
 class MovieDetailDto with _$MovieDetailDto {
   const factory MovieDetailDto({
     required List<GenreDto>? genres,
@@ -41,12 +41,14 @@ extension MovieDetailDtoX on MovieDetailDto {
         relatedMovies: similar!.results!.map((e) => e.toDomain()).toList(),
         id: UniqueId(id),
         trailer: Trailer(
-          'https://www.youtube.com/watch?v=${videos!.results!.firstWhere(
+          'https://www.youtube.com/watch?v=${videos?.results?.where(
                 (element) =>
                     element.isOfficial! &&
                     element.type == 'Trailer' &&
-                    element.site == 'youtube',
-              ).key!}',
+                    (element.site == 'Youtube' ||
+                        element.site == 'youtube' ||
+                        element.site == 'YouTube'),
+              ).first.key}',
         ),
       );
 }
